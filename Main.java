@@ -39,6 +39,11 @@ public class Main extends Application {
 
 			ArrayList<VBox> vboxList = new ArrayList<VBox>();
 			
+			
+			GridPane gridpane2 = new GridPane();
+			Scene eventTypeScene = new Scene(gridpane2,1000,700);
+			
+			
 			for(int i = 0; i < 40; i++)
 			{
 				String num;
@@ -46,7 +51,7 @@ public class Main extends Application {
 				Button myButton = new Button(num);
 				myButton.setPrefWidth(350);
 				myButton.setPrefHeight(100);
-				myButton.setOnAction(e -> { myButton.setStyle("-fx-background-color: MediumSeaGreen");});
+				myButton.setOnAction(e -> { primaryStage.setScene(eventTypeScene);});
 				buttonList.add(myButton);
 			}
 			
@@ -122,9 +127,6 @@ public class Main extends Application {
 			
 			
 			
-			GridPane gridpane2 = new GridPane();
-		
-			
 			BorderPane attempt = new BorderPane();
 			
 			attempt.setCenter(gridpane);
@@ -136,7 +138,26 @@ public class Main extends Application {
 			
 			primaryStage.setScene(scene2);
 			primaryStage.show();
-			System.out.println(vboxList.get(0));
+			
+			GridPane gridpane3 = new GridPane();
+			Scene dayScene = new Scene (gridpane3, 1000, 700);
+			
+			
+			String[] eventTypeList = {"Event", "Game", "Scrimmage", "Stream"};
+			
+			for(int i = 0; i < 4; i++)
+				{
+				Button event = new Button(eventTypeList[i]);
+				event.setPrefWidth(350);
+				event.setPrefHeight(100);
+				event.setOnAction(e -> { primaryStage.setScene(dayScene);});
+				gridpane2.add(event, i, 0);
+				}
+			
+			
+			
+			
+			
 		} 
 		catch(Exception e) 
 		{
@@ -150,6 +171,7 @@ public class Main extends Application {
 		public void handle(ActionEvent event)
 		{
 			myLabel.setText("Thanks for clicking the button!");
+			
 		}
 	}
 	
